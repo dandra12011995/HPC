@@ -91,6 +91,7 @@ void arbol (char* path, bool procesar) {
 				arch=fopen(fichero,"r");
 				fseek(arch,0,SEEK_END);
 				lSize = ftell (arch);
+				fclose(arch);
 				printf ("El fichero %s tiene tamaño %d\n", fichero,lSize);
 			}
 		}
@@ -133,6 +134,7 @@ int procesarDirectorio(){
 				arch=fopen(fichero,"r");
 				fseek(arch,0,SEEK_END);
 				lSize = ftell (arch);
+				fclose(arch);
 				printf ("El fichero %s tiene tamaño %d\n", fichero,lSize);
 			}
 		}
@@ -156,7 +158,7 @@ int main (int argc, char* argv []) {
 	for(int i = 0; i < numprocs; i ++){
 		array_cantidad_pendientes[i]=0;
 	}
-	char *path="/home/eduardo/Escritorio/disco";
+	char *path="/home/eduardo/Escritorio/prueba";
 	root = 0; tag = 1234;
 	source = MPI_ANY_SOURCE;
 	if(myid==0){
